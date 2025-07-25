@@ -2,9 +2,11 @@ import pygame
 import sys
 
 from ui import UI
+from path import Path
 
 from constants import SCREEN_WIDTH, SCREEN_HEIGHT
 from constants import STARTING_LIFE, STARTING_MONEY
+from constants import SAMPLE_PATH
 
 def main():
 	pygame.init()
@@ -15,6 +17,7 @@ def main():
 	dt = 0
 
 	ui = UI(STARTING_LIFE, STARTING_MONEY)
+	path = Path(SAMPLE_PATH)
 
 	# Management groups
 	towers = pygame.sprite.Group()
@@ -36,7 +39,7 @@ def main():
 
 		screen.fill("black")
 		ui.draw(screen)
-		# path.draw(screen)
+		path.draw(screen)
 		# for sprite in sprites:
 		#     sprite.draw(screen)
 

@@ -1,5 +1,38 @@
 SCREEN_WIDTH = 1280
 SCREEN_HEIGHT = 720
+PLAY_AREA_WIDTH = 1152
 
 STARTING_LIFE = 20
 STARTING_MONEY = 200
+
+PATH_WIDTH = 20
+SAMPLE_PATH = [(0, 25),
+    (PLAY_AREA_WIDTH - 25, 25),
+    (PLAY_AREA_WIDTH - 25, 75),
+    (25, 75),
+    (25, 125),
+    (PLAY_AREA_WIDTH - 25, 125),
+    (PLAY_AREA_WIDTH - 25, 175),
+    (25, 175),
+    (25, 225),
+    (PLAY_AREA_WIDTH - 25, 225),
+    (PLAY_AREA_WIDTH - 25, 275),
+    (25, 275),
+    (25, 325),
+    (PLAY_AREA_WIDTH - 25, 325),
+    (PLAY_AREA_WIDTH - 25, 375),
+    (25, 375),
+    (25, 425),
+    (PLAY_AREA_WIDTH - 25, 425),
+    (PLAY_AREA_WIDTH - 25, 475),
+    (25, 475),
+    (25, 525),
+    (PLAY_AREA_WIDTH - 25, 525),
+    (PLAY_AREA_WIDTH - 25, 575),
+    (25, 575),
+    (25, 625),
+    (PLAY_AREA_WIDTH - 25, 625),
+    (PLAY_AREA_WIDTH - 25, 675),
+    (25, 675),
+    (25, 720),
+    ]
