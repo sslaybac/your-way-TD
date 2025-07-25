@@ -1,6 +1,6 @@
 import pygame
 
-from constants import PATH_WIDTH
+from .constants import PATH_WIDTH
 
 class Path():
 	def __init__(self, coordinates):

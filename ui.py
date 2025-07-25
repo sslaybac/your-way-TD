@@ -1,8 +1,8 @@
 import math
 import pygame
-from constants import SCREEN_WIDTH, SCREEN_HEIGHT
+from .constants import SCREEN_WIDTH, SCREEN_HEIGHT
 
-from constants import STARTING_LIFE, STARTING_MONEY
+from .constants import STARTING_LIFE, STARTING_MONEY
 
 class UI():
 	def __init__(self, life, money):
