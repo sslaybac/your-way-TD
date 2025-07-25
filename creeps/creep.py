@@ -10,4 +10,4 @@ class Creep(CollisionCircle):
 		super().__init__(path.start[0], path.start[1], PATH_WIDTH/2)
 
 	def draw(self, screen):
-		pygame.draw.circle(screen, "red", self.position, self.radius, 2)
+		pygame.draw.circle(screen, "red", self.position, self.radius, 0)
