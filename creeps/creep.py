@@ -1,15 +1,15 @@
 import pygame
 
-from ..constants import PATH_WIDTH
+from ..constants import CELL_SIZE
 from ..collisioncircle import CollisionCircle
 
 class Creep(CollisionCircle):
-	def __init__(self, path):
+	def __init__(self, path, speed):
 		self.path = path
 		self.travel_distance = 0
 		self.move_counter = 1
-		self.speed = 5
-		super().__init__(path.start[0], path.start[1], PATH_WIDTH/2)
+		self.speed = speed
+		super().__init__(path.start[0], path.start[1], CELL_SIZE/2)
 
 	def update(self):
 		self.move()

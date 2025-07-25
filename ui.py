@@ -1,5 +1,6 @@
 import math
 import pygame
+from .cell_manager import get_zone
 from .constants import SCREEN_WIDTH, SCREEN_HEIGHT
 
 from .constants import STARTING_LIFE, STARTING_MONEY
@@ -9,15 +10,12 @@ class UI():
 		self.life = life
 		self.money = money
 
-		self.right = SCREEN_WIDTH
-		self.bottom = SCREEN_HEIGHT
-		self.top = 0
-		self.left = math.floor(0.9 * SCREEN_WIDTH)
-		self.height = SCREEN_HEIGHT
-		self.width = self.right - self.left
+		left = 29
+		top = 0
+		width = 3
+		height = 18
 
-
-		self.rectangle = pygame.Rect((self.left, self.top), (self.width, self.height))
+		self.rectangle = get_zone(left, top, width, height)
 
 	def draw(self, screen):
 		pygame.draw.rect(screen, "brown", self.rectangle)

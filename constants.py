@@ -1,38 +1,30 @@
-SCREEN_WIDTH = 1280
-SCREEN_HEIGHT = 720
-PLAY_AREA_WIDTH = 1152
+CELL_SIZE = 50
+SCREEN_WIDTH = 32 * CELL_SIZE
+SCREEN_HEIGHT = 18 * CELL_SIZE
+PLAY_AREA_WIDTH = SCREEN_WIDTH - 3 * CELL_SIZE
 
 STARTING_LIFE = 20
 STARTING_MONEY = 200
 
 PATH_WIDTH = 20
-SAMPLE_PATH = [(0, 25),
-    (PLAY_AREA_WIDTH - 25, 25),
-    (PLAY_AREA_WIDTH - 25, 75),
-    (25, 75),
-    (25, 125),
-    (PLAY_AREA_WIDTH - 25, 125),
-    (PLAY_AREA_WIDTH - 25, 175),
-    (25, 175),
-    (25, 225),
-    (PLAY_AREA_WIDTH - 25, 225),
-    (PLAY_AREA_WIDTH - 25, 275),
-    (25, 275),
-    (25, 325),
-    (PLAY_AREA_WIDTH - 25, 325),
-    (PLAY_AREA_WIDTH - 25, 375),
-    (25, 375),
-    (25, 425),
-    (PLAY_AREA_WIDTH - 25, 425),
-    (PLAY_AREA_WIDTH - 25, 475),
-    (25, 475),
-    (25, 525),
-    (PLAY_AREA_WIDTH - 25, 525),
-    (PLAY_AREA_WIDTH - 25, 575),
-    (25, 575),
-    (25, 625),
-    (PLAY_AREA_WIDTH - 25, 625),
-    (PLAY_AREA_WIDTH - 25, 675),
-    (25, 675),
-    (25, 720),
-    ]
+
+CELL_PATH = [
+	(0,1),
+	(28,1),
+	(28,3),
+	(0,3),
+	(0,5),
+	(28,5),
+	(28,7),
+	(0,7),
+	(0,9),
+	(28,9),
+	(28,11),
+	(0,11),
+	(0,13),
+	(28,13),
+	(28,15),
+	(0,15),
+	(0,17),
+	(28,17),
+]

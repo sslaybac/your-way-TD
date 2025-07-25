@@ -4,11 +4,11 @@ import sys
 from .ui import UI
 from .path import Path
 from .creeps.creep import Creep
-from .creeps.wave_generator import WaveGenerator
+from .creeps.wave import Wave
 
 from .constants import SCREEN_WIDTH, SCREEN_HEIGHT
 from .constants import STARTING_LIFE, STARTING_MONEY
-from .constants import SAMPLE_PATH
+from .constants import CELL_PATH
 
 def main():
 	pygame.init()
@@ -28,8 +28,8 @@ def main():
 
 
 	ui = UI(STARTING_LIFE, STARTING_MONEY)
-	path = Path(SAMPLE_PATH)
-	wave1 = WaveGenerator(30, 5)
+	path = Path(CELL_PATH)
+	wave1 = Wave(30, 5, path)
 
 	# Main Game Loop
 	while running:
@@ -41,8 +41,8 @@ def main():
 		"""
 		# towers.attack(creeps)
 		# projectiles.move(creeps)
+		wave1.update()
 		creeps.update()
-		wave1.update(path)
 
 		screen.fill("black")
 		ui.draw(screen)
