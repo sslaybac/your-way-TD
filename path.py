@@ -10,7 +10,6 @@ class Path():
 		self.coordinates = [pygame.math.Vector2(find_center(p[0], p[1])) for p in coordinates]
 		self.distances = self.calculate_distances()
 		self.start = self.coordinates[0]
-		# self.end = coordinates[-1]
 
 	def calculate_distances(self):
 		distances = []
