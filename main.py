@@ -1,7 +1,10 @@
 import pygame
 import sys
 
+from ui import UI
+
 from constants import SCREEN_WIDTH, SCREEN_HEIGHT
+from constants import STARTING_LIFE, STARTING_MONEY
 
 def main():
 	pygame.init()
@@ -10,6 +13,8 @@ def main():
 
 	clock = pygame.time.Clock()
 	dt = 0
+
+	ui = UI(STARTING_LIFE, STARTING_MONEY)
 
 	# Management groups
 	towers = pygame.sprite.Group()
@@ -30,7 +35,7 @@ def main():
 		# creeps.move()
 
 		screen.fill("black")
-		# ui.draw(screen)
+		ui.draw(screen)
 		# path.draw(screen)
 		# for sprite in sprites:
 		#     sprite.draw(screen)
