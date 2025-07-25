@@ -4,6 +4,7 @@ import sys
 from .ui import UI
 from .path import Path
 from .creeps.creep import Creep
+from .creeps.wave_generator import WaveGenerator
 
 from .constants import SCREEN_WIDTH, SCREEN_HEIGHT
 from .constants import STARTING_LIFE, STARTING_MONEY
@@ -28,7 +29,7 @@ def main():
 
 	ui = UI(STARTING_LIFE, STARTING_MONEY)
 	path = Path(SAMPLE_PATH)
-	creep1 = Creep(path)
+	wave1 = WaveGenerator(30, 5)
 
 	# Main Game Loop
 	while running:
@@ -41,6 +42,7 @@ def main():
 		# towers.attack(creeps)
 		# projectiles.move(creeps)
 		creeps.update()
+		wave1.update(path)
 
 		screen.fill("black")
 		ui.draw(screen)

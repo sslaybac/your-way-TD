@@ -8,6 +8,7 @@ class Creep(CollisionCircle):
 		self.path = path
 		self.travel_distance = 0
 		self.move_counter = 1
+		self.speed = 5
 		super().__init__(path.start[0], path.start[1], PATH_WIDTH/2)
 
 	def update(self):
@@ -19,7 +20,7 @@ class Creep(CollisionCircle):
 	def move(self):
 		self.move_counter -= 1
 		if self.move_counter <= 0:
-			self.travel_distance += 25
+			self.travel_distance += self.speed
 			self.position = self.path.map_position(self.travel_distance)
 			self.move_counter = 1
 
