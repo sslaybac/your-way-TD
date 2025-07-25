@@ -40,7 +40,7 @@ def main():
 		"""
 		# towers.attack(creeps)
 		# projectiles.move(creeps)
-		# creeps.move()
+		creeps.update()
 
 		screen.fill("black")
 		ui.draw(screen)
