@@ -8,17 +8,19 @@ from ..path import get_path
 from ..player import get_player
 
 class Creep(CollisionCircle):
-	def __init__(self, speed, HP):
+	def __init__(self, template):
 		self.travel_distance = 0
 		self.move_counter = 1
-		self.speed = speed
-		self.maxHP = HP
-		self.currentHP = HP
+		self.speed = template["speed"]
+		self.maxHP = template["hp"]
+		self.currentHP = self.maxHP
+		self.bounty = template["bounty"]
 		super().__init__(get_path().start[0], get_path().start[1], CELL_SIZE/2)
 
 	def damage(self, damage):
 		self.currentHP -= damage
 		if self.currentHP <= 0:
+			get_player().earn_bounty(self.bounty)
 			self.kill()
 
 	def update(self):

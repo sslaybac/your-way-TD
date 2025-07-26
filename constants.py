@@ -34,5 +34,6 @@ DEFAULT_CREEP_TEMPLATES = {
 }
 
 DEFAULT_WAVES_SEQUENCE = [
-	{"num_creeps": 30, "creep_type": "default", "production_cooldown": 10}
+	{"num_creeps": 30, "creep_type": "default", "production_cooldown": 10},
+	{"num_creeps": 50, "creep_type": "default", "production_cooldown": 15},
 ]

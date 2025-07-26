@@ -28,7 +28,6 @@ class Tower(pygame.sprite.Sprite):
 			return
 
 		targets[0].damage(5)
-		get_player().earn_bounty(10)
 		self.timer = self.cooldown
 
 
