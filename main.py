@@ -2,7 +2,6 @@ import pygame
 import sys
 
 from .ui import UI
-from .path import Path
 from .creeps.creep import Creep
 from .creeps.wave import Wave
 from .towers.tower import Tower
@@ -14,6 +13,7 @@ from .constants import CELL_PATH
 from .cell_manager import identify_grid_square, find_center
 
 from .player import get_player
+from .path import get_path
 
 def main():
 	pygame.init()
@@ -34,8 +34,7 @@ def main():
 
 
 	ui = UI()
-	path = Path(CELL_PATH)
-	wave1 = Wave(30, 5, path)
+	wave1 = Wave(30, 5)
 
 	# Main Game Loop
 	while running:
@@ -53,7 +52,7 @@ def main():
 
 		screen.fill("black")
 		ui.draw(screen)
-		path.draw(screen)
+		get_path().draw(screen)
 		for sprite in sprites:
 			sprite.draw(screen)
 
@@ -65,7 +64,7 @@ def main():
 			if event.type == pygame.MOUSEBUTTONUP:
 				mousex, mousey = pygame.mouse.get_pos()
 				grid_x, grid_y = identify_grid_square(mousex, mousey)
-				if not path.is_on_path(grid_x, grid_y):
+				if not get_path().is_on_path(grid_x, grid_y):
 					if get_player().purchase_tower(100):
 						new_tower = Tower(grid_x, grid_y, 100)
 

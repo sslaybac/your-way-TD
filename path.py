@@ -1,7 +1,10 @@
 import pygame
 
 from .constants import CELL_SIZE
+from .constants import CELL_PATH
 from .cell_manager  import find_center
+
+path = None
 
 class Path():
 	def __init__(self, grid_squares):
@@ -55,3 +58,9 @@ class Path():
 
 	def draw(self, screen):
 		pygame.draw.lines(screen, "yellow", False, self.coords, CELL_SIZE)
+
+def get_path():
+	global path
+	if path is None:
+		path = Path(CELL_PATH)
+	return path
