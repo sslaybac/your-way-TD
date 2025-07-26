@@ -14,3 +14,8 @@ def get_zone(grid_x, grid_y, width, height):
 	w = width * CELL_SIZE
 	h = height * CELL_SIZE
 	return pygame.Rect(x, y, w, h)
+
+def identify_grid_square(x, y):
+	grid_x = int(x//CELL_SIZE)
+	grid_y = int(y//CELL_SIZE)
+	return (grid_x, grid_y)
