@@ -74,7 +74,9 @@ def main():
 			if event.type == pygame.MOUSEBUTTONUP:
 				mousex, mousey = pygame.mouse.get_pos()
 				grid_x, grid_y = identify_grid_square(mousex, mousey)
-				if not get_path().is_on_path(grid_x, grid_y):
+				if ui.is_on_ui(grid_x, grid_y):
+					pass
+				elif not get_path().is_on_path(grid_x, grid_y):
 					if get_player().purchase_tower(100):
 						new_tower = Tower(grid_x, grid_y, 100)
 
