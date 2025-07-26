@@ -9,6 +9,7 @@ from .towers.tower import Tower
 from .constants import SCREEN_WIDTH, SCREEN_HEIGHT
 from .constants import STARTING_LIFE, STARTING_MONEY
 from .constants import CELL_PATH
+from .constants import DEFAULT_WAVES_SEQUENCE
 
 from .cell_manager import identify_grid_square, find_center
 
@@ -34,8 +35,11 @@ def main():
 
 
 	ui = UI()
-	wave1 = Wave(30, 10)
+	waves = []
+	for wave in DEFAULT_WAVES_SEQUENCE:
+		waves.append(Wave(wave))
 
+	current_wave = waves.pop(0)
 	# Main Game Loop
 	while running:
 		"""
@@ -46,7 +50,13 @@ def main():
 		"""
 		# towers.attack(creeps)
 		# projectiles.move(creeps)
-		wave1.update()
+		current_wave.update()
+		if current_wave.is_empty():
+			if waves:
+				current_wave = waves.pop(0)
+			elif len(creeps) == 0:
+				print("You Win!")
+				sys.exit(0)
 		creeps.update()
 		towers.update(creeps)
 

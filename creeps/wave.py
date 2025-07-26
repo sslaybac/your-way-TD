@@ -2,10 +2,14 @@ from .creep import Creep
 from ..path import get_path
 
 class Wave():
-	def __init__(self, num_creeps, production_cooldown):
-		self.num_creeps = num_creeps
-		self.production_cooldown = production_cooldown
-		self.production_timer = production_cooldown
+	def __init__(self, template):
+		self.num_creeps = template["num_creeps"]
+		self.creep_type = template["creep_type"]
+		self.production_cooldown = template["production_cooldown"]
+		self.production_timer = self.production_cooldown
+
+	def is_empty(self):
+		return self.num_creeps <= 0
 
 	def update(self):
 		self.production_timer -= 1

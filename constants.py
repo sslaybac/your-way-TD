@@ -28,3 +28,11 @@ CELL_PATH = [
 	(0,17),
 	(28,17),
 ]
+
+DEFAULT_CREEP_TEMPLATES = {
+	"default": {"name": "default", "speed": 5, "hp": 10, "bounty": 10},
+}
+
+DEFAULT_WAVES_SEQUENCE = [
+	{"num_creeps": 30, "creep_type": "default", "production_cooldown": 10}
+]
