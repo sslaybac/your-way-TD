@@ -34,7 +34,7 @@ def main():
 
 
 	ui = UI()
-	wave1 = Wave(30, 5)
+	wave1 = Wave(30, 10)
 
 	# Main Game Loop
 	while running:

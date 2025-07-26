@@ -10,6 +10,6 @@ class Wave():
 	def update(self):
 		self.production_timer -= 1
 		if (self.production_timer <= 0 and self.num_creeps > 0):
-			Creep(5)
+			Creep(5, 10)
 			self.num_creeps -= 1
 			self.production_timer = self.production_cooldown
