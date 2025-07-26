@@ -34,6 +34,7 @@ class Tower(pygame.sprite.Sprite):
 		self.attack(targets)
 
 	def attack(self, targets):
+		self.timer = self.cooldown
 		if self.type == "hitscan":
 			targets[0].damage(self.damage)
 			self.timer = self.cooldown

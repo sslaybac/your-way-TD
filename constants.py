@@ -44,5 +44,5 @@ DEFAULT_WAVES_SEQUENCE = [
 DEFAULT_TOWER_TEMPLATES = {
 	"default" : {"name": "default", "type": "hitscan", "cost": 100, "damage": 5, "cooldown": 10, "range": 100, "color": "green"},
 	"blue_blaster" : {"name": "blue_blaster", "type": "hitscan", "cost": 50, "damage": 2, "cooldown": 10, "range": 100, "color": "blue"},
-	"basic_projectile" : {"name": "basic_projectile", "type": "projectile", "cost": 50, "damage": 10, "cooldown": 20, "range": 100, "color": "orange"},
+	"basic_projectile" : {"name": "basic_projectile", "type": "projectile", "cost": 50, "damage": 10, "cooldown": 30, "range": 100, "color": "orange"},
 }
