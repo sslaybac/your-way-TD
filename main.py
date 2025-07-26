@@ -34,7 +34,6 @@ def main():
 	ui = UI(STARTING_LIFE, STARTING_MONEY)
 	path = Path(CELL_PATH)
 	wave1 = Wave(30, 5, path)
-	tower1 = Tower(20, 2, 100)
 
 	# Main Game Loop
 	while running:
@@ -64,7 +63,8 @@ def main():
 			if event.type == pygame.MOUSEBUTTONUP:
 				mousex, mousey = pygame.mouse.get_pos()
 				grid_x, grid_y = identify_grid_square(mousex, mousey)
-				new_tower = Tower(grid_x, grid_y, 100)
+				if not path.is_on_path(grid_x, grid_y):
+					new_tower = Tower(grid_x, grid_y, 100)
 
 if __name__ == "__main__":
 	main()
