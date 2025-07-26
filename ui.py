@@ -1,14 +1,11 @@
-import math
 import pygame
-from .cell_manager import get_zone
-from .constants import SCREEN_WIDTH, SCREEN_HEIGHT
+from .player import get_player
 
-from .constants import STARTING_LIFE, STARTING_MONEY
+from .cell_manager import get_zone
+from .cell_manager import find_center
 
 class UI():
-	def __init__(self, life, money):
-		self.life = life
-		self.money = money
+	def __init__(self):
 
 		left = 29
 		top = 0
@@ -18,4 +15,20 @@ class UI():
 		self.rectangle = get_zone(left, top, width, height)
 
 	def draw(self, screen):
+		lives = get_player().life
+		money = get_player().money
+
+		life_text = f"life: {lives}"
+		money_text = f"money: ${money}"
+		font = pygame.font.Font('freesansbold.ttf', 14)
+		life_screen = font.render(life_text, "green", "blue")
+		money_screen = font.render(money_text, "green", "blue")
+		life_rect = life_screen.get_rect()
+		money_rect = life_screen.get_rect()
+
+		life_rect.center = find_center(30, 1)
+		money_rect.center = find_center(30, 2)
+
 		pygame.draw.rect(screen, "brown", self.rectangle)
+		screen.blit(life_screen, life_rect)
+		screen.blit(money_screen, money_rect)

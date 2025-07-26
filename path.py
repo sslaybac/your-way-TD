@@ -45,18 +45,12 @@ class Path():
 			a_y = a[1]
 			b_x = b[0]
 			b_y = b[1]
-			print(f"a: {a_x}, {a_y}")
-			print(f"b: {b_x}, {b_y}")
-			print(f"square: {square_x}, {square_y}")
 			if (a_x == b_x == square_x):
 				if (a_y <= square_y <= b_y or b_y <= square_y <= a_y):
-					print("square is on path")
 					return True
 			if (a_y == b_y == square_y):
 				if (a_x <= square_x <= b_x or b_x <= square_x <= a_x):
-					print("square is on path")
 					return True
-			print("square is not on path")
 		return False
 
 	def draw(self, screen):

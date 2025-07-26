@@ -13,6 +13,8 @@ from .constants import CELL_PATH
 
 from .cell_manager import identify_grid_square, find_center
 
+from .player import get_player
+
 def main():
 	pygame.init()
 	screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
@@ -31,7 +33,7 @@ def main():
 	Tower.containers = (towers, sprites)
 
 
-	ui = UI(STARTING_LIFE, STARTING_MONEY)
+	ui = UI()
 	path = Path(CELL_PATH)
 	wave1 = Wave(30, 5, path)
 
@@ -64,7 +66,8 @@ def main():
 				mousex, mousey = pygame.mouse.get_pos()
 				grid_x, grid_y = identify_grid_square(mousex, mousey)
 				if not path.is_on_path(grid_x, grid_y):
-					new_tower = Tower(grid_x, grid_y, 100)
+					if get_player().purchase_tower(100):
+						new_tower = Tower(grid_x, grid_y, 100)
 
 if __name__ == "__main__":
 	main()
