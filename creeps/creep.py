@@ -16,7 +16,7 @@ class Creep(CollisionCircle):
 		self.currentHP = self.maxHP
 		self.bounty = template["bounty"]
 		self.color = template["color"]
-		super().__init__(get_path().start[0], get_path().start[1], CELL_SIZE/2)
+		super().__init__(get_path().start, CELL_SIZE/2)
 
 	def damage(self, damage):
 		self.currentHP -= damage

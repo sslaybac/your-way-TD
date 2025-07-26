@@ -13,8 +13,8 @@ class Tower(pygame.sprite.Sprite):
 		else:
 			super().__init__()
 		centerpoint = find_center(x, y)
-		self.building = CollisionCircle(centerpoint.x, centerpoint.y, CELL_SIZE/2)
-		self.range = CollisionCircle(centerpoint.x, centerpoint.y, template["range"])
+		self.building = CollisionCircle(centerpoint, CELL_SIZE/2)
+		self.range = CollisionCircle(centerpoint, template["range"])
 		self.cooldown = template["cooldown"]
 		self.damage = template["damage"]
 		self.type = template["type"]

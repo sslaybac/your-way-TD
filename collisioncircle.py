@@ -1,13 +1,13 @@
 import pygame
 
 class CollisionCircle(pygame.sprite.Sprite):
-	def __init__(self, x, y, radius):
+	def __init__(self, position, radius):
 		if hasattr(self, "containers"):
 			super().__init__(self.containers)
 		else:
 			super().__init__()
 
-		self.position = pygame.Vector2(x, y)
+		self.position = position
 		self.radius = radius
 
 	def collided_with(self, other):
