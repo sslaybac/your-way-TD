@@ -4,6 +4,8 @@ from ..collisioncircle import CollisionCircle
 from ..constants import CELL_SIZE
 from ..cell_manager import find_center
 
+from ..player import get_player
+
 class Tower(pygame.sprite.Sprite):
 	def __init__(self, x, y, range):
 		if hasattr(self, "containers"):
@@ -26,6 +28,7 @@ class Tower(pygame.sprite.Sprite):
 			return
 
 		targets[0].kill()
+		get_player().earn_bounty(10)
 		self.timer = self.cooldown
 
 

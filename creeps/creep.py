@@ -3,6 +3,8 @@ import pygame
 from ..constants import CELL_SIZE
 from ..collisioncircle import CollisionCircle
 
+from ..player import get_player
+
 class Creep(CollisionCircle):
 	def __init__(self, path, speed):
 		self.path = path
@@ -15,6 +17,7 @@ class Creep(CollisionCircle):
 		self.move()
 		if self.path.reached_end(self.travel_distance):
 			print("Creep reached end of path.")
+			get_player().lose_life(1)
 			self.kill()
 
 	def move(self):

@@ -23,6 +23,9 @@ class Player():
 			print("YOU LOSE!")
 			sys.exit(0)
 
+	def earn_bounty(self, payment):
+		self.money += payment
+
 def get_player():
 	global player
 	if player is None:
