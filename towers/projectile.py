@@ -3,6 +3,7 @@ import pygame
 from ..constants import PROJECTILE_SPEED
 from ..constants import PROJECTILE_RADIUS
 from ..collisioncircle import CollisionCircle
+from ..cell_manager import left_play_area
 
 class Projectile(CollisionCircle):
 	def __init__(self, start, target, damage):
@@ -18,6 +19,8 @@ class Projectile(CollisionCircle):
 			if self.collided_with(creep):
 				creep.damage(self.damage)
 				self.kill()
+		if left_play_area(self.position):
+			self.kill()
 
 	def draw(self, screen):
 		pygame.draw.circle(screen, self.color, self.position, self.radius, 0)

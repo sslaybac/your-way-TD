@@ -12,8 +12,10 @@ from .constants import STARTING_LIFE, STARTING_MONEY
 from .constants import CELL_PATH
 from .constants import DEFAULT_WAVES_SEQUENCE
 from .constants import DEFAULT_TOWER_TEMPLATES 
+from .constants import PLAY_AREA_WIDTH 
 
 from .cell_manager import identify_grid_square, find_center
+from .cell_manager import get_zone
 
 from .player import get_player
 from .path import get_path

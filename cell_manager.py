@@ -1,5 +1,7 @@
 import pygame
 from .constants import CELL_SIZE
+from .constants import PLAY_AREA_WIDTH
+from .constants import SCREEN_HEIGHT
 
 def find_center(x,y):
 	left = CELL_SIZE * (x)
@@ -19,3 +21,10 @@ def identify_grid_square(x, y):
 	grid_x = int(x//CELL_SIZE)
 	grid_y = int(y//CELL_SIZE)
 	return (grid_x, grid_y)
+
+def left_play_area(point):
+	play_area = get_zone(0,0,27,18)
+	if play_area.collidepoint(point):
+		return False
+	else:
+		return True
