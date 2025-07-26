@@ -5,6 +5,7 @@ from .ui import UI
 from .creeps.creep import Creep
 from .creeps.wave import Wave
 from .towers.tower import Tower
+from .towers.projectile import Projectile
 
 from .constants import SCREEN_WIDTH, SCREEN_HEIGHT
 from .constants import STARTING_LIFE, STARTING_MONEY
@@ -33,6 +34,7 @@ def main():
 
 	Creep.containers = (creeps, sprites)
 	Tower.containers = (towers, sprites)
+	Projectile.containers = (projectiles, sprites)
 
 
 	ui = UI()
@@ -61,6 +63,7 @@ def main():
 				sys.exit(0)
 		creeps.update()
 		towers.update(creeps)
+		projectiles.update(creeps)
 
 		screen.fill("black")
 		ui.draw(screen)

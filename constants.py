@@ -2,6 +2,8 @@ CELL_SIZE = 50
 SCREEN_WIDTH = 32 * CELL_SIZE
 SCREEN_HEIGHT = 18 * CELL_SIZE
 PLAY_AREA_WIDTH = SCREEN_WIDTH - 3 * CELL_SIZE
+PROJECTILE_SPEED = 5
+PROJECTILE_RADIUS = 5
 
 STARTING_LIFE = 20
 STARTING_MONEY = 200
@@ -42,4 +44,5 @@ DEFAULT_WAVES_SEQUENCE = [
 DEFAULT_TOWER_TEMPLATES = {
 	"default" : {"name": "default", "type": "hitscan", "cost": 100, "damage": 5, "cooldown": 10, "range": 100, "color": "green"},
 	"blue_blaster" : {"name": "blue_blaster", "type": "hitscan", "cost": 50, "damage": 2, "cooldown": 10, "range": 100, "color": "blue"},
+	"basic_projectile" : {"name": "basic_projectile", "type": "projectile", "cost": 50, "damage": 10, "cooldown": 20, "range": 100, "color": "orange"},
 }

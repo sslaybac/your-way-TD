@@ -5,6 +5,7 @@ from ..constants import CELL_SIZE
 from ..cell_manager import find_center
 
 from ..player import get_player
+from .projectile import Projectile
 
 class Tower(pygame.sprite.Sprite):
 	def __init__(self, x, y, template):
@@ -36,6 +37,11 @@ class Tower(pygame.sprite.Sprite):
 		if self.type == "hitscan":
 			targets[0].damage(self.damage)
 			self.timer = self.cooldown
+		elif self.type == "projectile":
+			self.launch_projectile_at(targets[0])
+
+	def launch_projectile_at(self, target):
+		Projectile(self.building.position.copy(), target.position.copy(), self.damage)
 
 	def identify_targets(self, creeps):
 		targets = []
