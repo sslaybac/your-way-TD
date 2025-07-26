@@ -7,15 +7,17 @@ from ..cell_manager import find_center
 from ..player import get_player
 
 class Tower(pygame.sprite.Sprite):
-	def __init__(self, x, y, range):
+	def __init__(self, x, y, template):
 		if hasattr(self, "containers"):
 			super().__init__(self.containers)
 		else:
 			super().__init__()
 		centerpoint = find_center(x, y)
 		self.building = CollisionCircle(centerpoint.x, centerpoint.y, CELL_SIZE/2)
-		self.range = CollisionCircle(centerpoint.x, centerpoint.y, range)
-		self.cooldown = 10
+		self.range = CollisionCircle(centerpoint.x, centerpoint.y, template["range"])
+		self.cooldown = template["cooldown"]
+		self.damage = template["damage"]
+		self.type = "hitscan"
 		self.timer = 0
 
 	def update(self, creeps):
@@ -27,9 +29,12 @@ class Tower(pygame.sprite.Sprite):
 		if not targets:
 			return
 
-		targets[0].damage(5)
-		self.timer = self.cooldown
+		self.attack(targets)
 
+	def attack(self, targets):
+		if self.type == "hitscan":
+			targets[0].damage(self.damage)
+			self.timer = self.cooldown
 
 	def identify_targets(self, creeps):
 		targets = []

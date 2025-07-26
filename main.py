@@ -10,6 +10,7 @@ from .constants import SCREEN_WIDTH, SCREEN_HEIGHT
 from .constants import STARTING_LIFE, STARTING_MONEY
 from .constants import CELL_PATH
 from .constants import DEFAULT_WAVES_SEQUENCE
+from .constants import DEFAULT_TOWER_TEMPLATES 
 
 from .cell_manager import identify_grid_square, find_center
 
@@ -40,6 +41,7 @@ def main():
 		waves.append(Wave(wave))
 
 	current_wave = waves.pop(0)
+
 	# Main Game Loop
 	while running:
 		"""
@@ -77,8 +79,9 @@ def main():
 				if ui.is_on_ui(grid_x, grid_y):
 					pass
 				elif not get_path().is_on_path(grid_x, grid_y):
-					if get_player().purchase_tower(100):
-						new_tower = Tower(grid_x, grid_y, 100)
+					cost = get_player().selected_tower["cost"]
+					if get_player().purchase_tower(cost):
+						new_tower = Tower(grid_x, grid_y, get_player().selected_tower)
 
 if __name__ == "__main__":
 	main()

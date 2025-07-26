@@ -38,3 +38,7 @@ DEFAULT_WAVES_SEQUENCE = [
 	{"num_creeps": 30, "creep_type": "default", "production_cooldown": 10},
 	{"num_creeps": 50, "creep_type": "speedy", "production_cooldown": 15},
 ]
+
+DEFAULT_TOWER_TEMPLATES = {
+	"default" : {"name": "default", "type": "hitscan", "cost": 100, "damage": 5, "cooldown": 10, "range": 100, "color": "green"}
+}
