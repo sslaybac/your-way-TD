@@ -77,7 +77,7 @@ def main():
 				mousex, mousey = pygame.mouse.get_pos()
 				grid_x, grid_y = identify_grid_square(mousex, mousey)
 				if ui.is_on_ui(grid_x, grid_y):
-					pass
+					ui.check_selection(grid_x, grid_y)
 				elif not get_path().is_on_path(grid_x, grid_y):
 					cost = get_player().selected_tower["cost"]
 					if get_player().purchase_tower(cost):

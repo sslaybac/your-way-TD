@@ -17,7 +17,8 @@ class Tower(pygame.sprite.Sprite):
 		self.range = CollisionCircle(centerpoint.x, centerpoint.y, template["range"])
 		self.cooldown = template["cooldown"]
 		self.damage = template["damage"]
-		self.type = "hitscan"
+		self.type = template["type"]
+		self.color = template["color"]
 		self.timer = 0
 
 	def update(self, creeps):
@@ -46,4 +47,4 @@ class Tower(pygame.sprite.Sprite):
 
 	def draw(self, screen):
 		pygame.draw.circle(screen, "gray", self.range.position, self.range.radius, 1)
-		pygame.draw.circle(screen, "green", self.building.position, self.building.radius, 0)
+		pygame.draw.circle(screen, self.color, self.building.position, self.building.radius, 0)

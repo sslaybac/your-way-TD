@@ -14,6 +14,7 @@ class Player():
 
 	def select_tower(self, name):
 		self.selected_tower = DEFAULT_TOWER_TEMPLATES[name]
+		print(f"selecting {name}")
 
 	def purchase_tower(self, cost):
 		if self.money < cost:
