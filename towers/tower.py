@@ -55,3 +55,5 @@ class Tower(pygame.sprite.Sprite):
 	def draw(self, screen):
 		pygame.draw.circle(screen, "gray", self.range.position, self.range.radius, 1)
 		pygame.draw.circle(screen, self.color, self.building.position, self.building.radius, 0)
+		if self.timer > self.cooldown -5:
+			pygame.draw.circle(screen, "red", self.range.position, 5, 0)
