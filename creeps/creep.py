@@ -15,6 +15,7 @@ class Creep(CollisionCircle):
 		self.maxHP = template["hp"]
 		self.currentHP = self.maxHP
 		self.bounty = template["bounty"]
+		self.color = template["color"]
 		super().__init__(get_path().start[0], get_path().start[1], CELL_SIZE/2)
 
 	def damage(self, damage):
@@ -52,4 +53,4 @@ class Creep(CollisionCircle):
 		draw_bottom_left = health_percentage > .25
 		draw_bottom_right = health_percentage > 0
 
-		pygame.draw.circle(screen, "red", self.position, self.radius, 0, draw_top_right, draw_top_left, draw_bottom_left, draw_bottom_right)
+		pygame.draw.circle(screen, self.color, self.position, self.radius, 0, draw_top_right, draw_top_left, draw_bottom_left, draw_bottom_right)
