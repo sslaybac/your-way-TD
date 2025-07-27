@@ -23,12 +23,14 @@ CELL_PATH = [
 
 DEFAULT_CREEP_TEMPLATES = {
 	"default": {"name": "default", "speed": 5, "hp": 10, "bounty": 10, "color": "red"},
-	"speedy": {"name": "speedy", "speed": 10, "hp": 5, "bounty": 5, "color": "black"}
+	"speedy": {"name": "speedy", "speed": 10, "hp": 5, "bounty": 5, "color": "black"},
+	"strong": {"name": "strong", "speed": 2, "hp": 20, "bounty": 20, "color": "blue"},
 }
 
 DEFAULT_WAVES_SEQUENCE = [
 	{"num_creeps": 30, "creep_type": "default", "production_cooldown": 10},
-	{"num_creeps": 50, "creep_type": "speedy", "production_cooldown": 15},
+	{"num_creeps": 50, "creep_type": "speedy", "production_cooldown": 5},
+	{"num_creeps": 20, "creep_type": "strong", "production_cooldown": 10},
 ]
 
 DEFAULT_TOWER_TEMPLATES = {
