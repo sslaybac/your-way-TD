@@ -6,6 +6,7 @@ from ..cell_manager import find_center
 
 from ..player import get_player
 from .projectile import Projectile
+from ..path import get_path
 
 class Tower(pygame.sprite.Sprite):
 	def __init__(self, x, y, template):
@@ -21,6 +22,8 @@ class Tower(pygame.sprite.Sprite):
 		self.type = template["type"]
 		self.color = template["color"]
 		self.timer = 0
+		if get_path().is_poison(x, y):
+			self.cooldown *= 2
 
 	"""
 	1. If appropriate, step through the cooldown

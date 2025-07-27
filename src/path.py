@@ -1,10 +1,12 @@
 import pygame
+from pygame.math import Vector2
 import os
 
 from .constants import CELL_SIZE
 from .constants import CELL_PATH
 from .constants import DEFAULT_MAP_FILE
 from .cell_manager  import find_center
+from .cell_manager  import cell_to_rect
 
 # singleton variable.
 path = None
@@ -25,12 +27,12 @@ class Path():
 			data = f.read().splitlines()
 			self.map = data[:-1]
 			start = data[-1].split(',')
-			self.start = pygame.math.Vector2(int(start[0]), int(start[1]))
+			self.start = Vector2(int(start[0]), int(start[1]))
 			self.build_path()
-
-		self.coords = [pygame.math.Vector2(find_center(p[0], p[1])) for p in self.grid_squares]
-		self.distances = self.calculate_distances()
-		self.start = self.coords[0]
+			self.find_poison_squares()
+			self.coords = [Vector2(find_center(p[0], p[1])) for p in self.grid_squares]
+			self.distances = self.calculate_distances()
+			self.start = self.coords[0]
 
 	"""
 	utility function to extract the path from the map given
@@ -55,10 +57,18 @@ class Path():
 					pass
 				case _:
 					raise Exception("Path doesn't reach a valid endpoint")
-			self.grid_squares.append(pygame.math.Vector2(x, y))
+			self.grid_squares.append(Vector2(x, y))
 			direction = self.map[y][x]
 
 
+	"""
+	utility function to find the 'poison' squares that reduce tower effectiveness
+	"""
+	def find_poison_squares(self):
+		self.poison_squares = []
+		for y, line in enumerate(self.map):
+			x_set = [x for x, ch in enumerate(line) if ch == 'p']
+			self.poison_squares += [(x, y) for x in x_set]
 
 
 	"""
@@ -126,8 +136,21 @@ class Path():
 					return True
 		return False
 
+	def is_poison(self, grid_x, grid_y):
+		if (grid_x, grid_y) in self.poison_squares:
+			return True
+		else:
+			return False
+	"""
+	1. Draw the path, using the lines(function) thickness is equal to CELL_SIZE
+	2. Draw the poison squares, using the rectangle of each cell.
+	"""
 	def draw(self, screen):
 		pygame.draw.lines(screen, "yellow", False, self.coords, CELL_SIZE)
+		for point in self.poison_squares:
+			rect = cell_to_rect(point[0], point[1])
+			pygame.draw.rect(screen, "purple", rect)
+
 
 # singleton call
 def get_path():
