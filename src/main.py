@@ -9,10 +9,10 @@ from .towers.projectile import Projectile
 
 from .constants import SCREEN_WIDTH, SCREEN_HEIGHT
 from .constants import STARTING_LIFE, STARTING_MONEY
-from .constants import CELL_PATH
 from .constants import DEFAULT_WAVES_SEQUENCE
 from .constants import DEFAULT_TOWER_TEMPLATES 
 from .constants import PLAY_AREA_WIDTH 
+from .constants import FRAME_RATE
 
 from .cell_manager import identify_grid_square, find_center
 from .cell_manager import get_zone
@@ -92,7 +92,7 @@ def main():
 			b. mouse click in ui: select tower type
 			c. mouse click not in ui: place tower, if there is enough money
 		"""
-		dt = clock.tick(60) / 1000
+		dt = clock.tick(FRAME_RATE) / 1000
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:
 				return

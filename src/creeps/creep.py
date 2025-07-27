@@ -2,6 +2,7 @@ import math
 import pygame
 
 from ..constants import CELL_SIZE
+from ..constants import FRAME_RATE
 from ..collisioncircle import CollisionCircle
 
 from ..path import get_path
@@ -58,18 +59,15 @@ class Creep(CollisionCircle):
 
 	"""
 	state_change:
-		reduce cooldown between moves
-		on cooldown:
-			increase travel_distance member according to speed member
-			update pixel position accordingly
-			reset cooldown
+		increase travel_distance member, based on speed 
+		(speed is measured in grid squares / second)
+		update pixel position accordingly
+		reset cooldown
 	"""
 	def move(self):
-		self.move_counter -= 1
-		if self.move_counter <= 0:
-			self.travel_distance += self.speed
-			self.position = get_path().map_position(self.travel_distance)
-			self.move_counter = 1
+		self.travel_distance += self.speed * CELL_SIZE / FRAME_RATE
+		self.position = get_path().map_position(self.travel_distance)
+		self.move_counter = 1
 
 	"""
 	output:

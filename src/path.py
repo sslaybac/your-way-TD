@@ -3,7 +3,6 @@ from pygame.math import Vector2
 import os
 
 from .constants import CELL_SIZE
-from .constants import CELL_PATH
 from .constants import DEFAULT_MAP_FILE
 from .cell_manager  import find_center
 from .cell_manager  import cell_to_rect
