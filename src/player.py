@@ -2,7 +2,8 @@ import sys
 
 from .constants import STARTING_MONEY
 from .constants import STARTING_LIFE
-from .constants import DEFAULT_TOWER_TEMPLATES 
+
+from .datastore import get_datastore
 
 # singleton variable
 player = None
@@ -25,7 +26,7 @@ class Player():
 	assigns selected_tower based on the constant collection
 	"""
 	def select_tower(self, name):
-		self.selected_tower = DEFAULT_TOWER_TEMPLATES[name]
+		self.selected_tower = get_datastore().towers[name]
 
 	"""
 	input: cost

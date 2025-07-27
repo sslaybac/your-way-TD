@@ -5,7 +5,8 @@ from .player import get_player
 
 from .cell_manager import get_zone
 from .cell_manager import find_center
-from .constants import DEFAULT_TOWER_TEMPLATES 
+
+from .datastore import get_datastore
 
 class UI():
 	"""
@@ -24,7 +25,7 @@ class UI():
 		self.rectangle = get_zone(left, top, width, height)
 		self.buttons = []
 		idx = 0
-		for template in DEFAULT_TOWER_TEMPLATES.values():
+		for template in get_datastore().towers.values():
 			if idx % 2 == 0:
 				x_val = 29
 			else:

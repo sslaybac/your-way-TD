@@ -1,0 +1,9 @@
+{
+    "name": "basic_AOE",
+    "type": "AOE",
+    "cost": 200,
+    "damage": 10,
+    "cooldown": 60,
+    "range": 100,
+    "color": "red"
+}

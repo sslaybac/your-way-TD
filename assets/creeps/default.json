@@ -1,0 +1,7 @@
+{
+    "name": "default",
+    "speed": 5,
+    "hp": 10,
+    "bounty": 10,
+    "color": "red"
+}

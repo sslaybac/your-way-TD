@@ -1,0 +1,29 @@
+[
+    {
+        "name": "default",
+        "type": "hitscan",
+        "cost": 100,
+        "damage": 5,
+        "cooldown": 10,
+        "range": 100,
+        "color": "green"
+    },
+    {
+        "name": "blue_blaster",
+        "type": "hitscan",
+        "cost": 50,
+        "damage": 2,
+        "cooldown": 10,
+        "range": 100,
+        "color": "blue"
+    },
+    {
+        "name": "basic_projectile",
+        "type": "projectile",
+        "cost": 50,
+        "damage": 10,
+        "cooldown": 30,
+        "range": 100,
+        "color": "orange"
+    }
+]

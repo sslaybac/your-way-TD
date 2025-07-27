@@ -10,7 +10,6 @@ from .towers.projectile import Projectile
 
 from .constants import SCREEN_WIDTH, SCREEN_HEIGHT
 from .constants import STARTING_LIFE, STARTING_MONEY
-from .constants import DEFAULT_TOWER_TEMPLATES 
 from .constants import PLAY_AREA_WIDTH 
 from .constants import FRAME_RATE
 
@@ -47,7 +46,6 @@ def main():
 	ui = UI()
 
 	waves = list(map(create_wave, get_datastore().waves))
-
 	current_wave = waves.pop(0)
 
 	# Main Game Loop
