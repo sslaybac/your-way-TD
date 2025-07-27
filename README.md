@@ -51,3 +51,16 @@ Each wave has the following attributes:
 * `num_creeps`: the number of creeps that will be released during this wave.
 * `creep_type`: the name of the creep type that will be unleashed in this wave.
 * `production_cooldown`: the number of frames that pass between each creep being released
+
+### Map
+The level map is defined in the file `assets/maps/default_map.txt` The file begins with a 2D array of characters (27x18), representing the x,y grid coordinates of the map. Like pydraw pixels, the grid squares are 0-indexed and begin with 0,0 in the top left corner.
+
+After the map, there is a single pair of numbers, separated by a comma, on the last line of the file. These numbers represent the Creep spawn point, as an x,y grid square.
+Characters used to define the map are:
+* 'n': part of the path. the next square will be 'north' (above) from this one.
+* 's': part of the path. the next square will be 'south' (below) from this one.
+* 'w': part of the path. the next square will be 'west' (left) from this one.
+* 'e': part of the path. the next square will be 'east' (right) from this one.
+* 'z': part of the path. This is the end of the path. Creeps that reach this square will despawn and damage the player.
+* '0': non-path square. THe player is free to place towers here.
+* 'p': 'poison' square. Towers can be placed here, but their firing rate will be halved.
