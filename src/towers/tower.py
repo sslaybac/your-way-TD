@@ -51,6 +51,11 @@ class Tower(pygame.sprite.Sprite):
 			self.timer = self.cooldown
 		elif self.type == "projectile":
 			self.launch_projectile_at(targets[0])
+		elif self.type == "AOE":
+			for target in targets:
+				target.damage(self.damage)
+		else:
+			print("No attack Action for {self.type}")
 
 	def launch_projectile_at(self, target):
 		Projectile(self.building.position.copy(), target.position.copy(), self.damage)
