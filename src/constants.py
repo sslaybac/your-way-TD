@@ -13,6 +13,7 @@ STARTING_LIFE = 20
 STARTING_MONEY = 200
 
 # default collections for path, creeps, waves, and towers
+DEFAULT_MAP_FILE = "assets/maps/default_map.txt"
 CELL_PATH = [
 	(0,1), (27,1), (27,3), (0,3),
 	(0,5), (27,5), (27,7), (0,7),

@@ -5,7 +5,7 @@ from .constants import SCREEN_HEIGHT
 
 """
 input: x,y coordinates for a grid square
-output: x,y pixel coordinates for the center of the grid square
+return: x,y pixel coordinates for the center of the grid square
 """
 def find_center(x,y):
 	left = CELL_SIZE * (x)
@@ -16,7 +16,7 @@ def find_center(x,y):
 
 """
 input: x,y (top left grid coordinates), width, height 
-return a pygame rectangle that covers the area
+return: a pygame rectangle that covers the area
 """
 def get_zone(grid_x, grid_y, width, height):
 	x = grid_x * CELL_SIZE
@@ -36,7 +36,7 @@ def identify_grid_square(x, y):
 
 """
 input: a Vector2 point
-output: boolean --
+return: boolean --
 	if the point is outside the playable area: True
 	otherwise: False
 """
@@ -46,3 +46,14 @@ def left_play_area(point):
 		return False
 	else:
 		return True
+
+"""
+input: grid coordinates of a cell,
+return: pygame rectangle for that cell only
+"""
+def cell_to_rect(grid_x,grid_y):
+	x = grid_x * CELL_SIZE
+	y = grid_y * CELL_SIZE
+	w = CELL_SIZE
+	h = CELL_SIZE
+	return pygame.Rect(x, y, w, h)

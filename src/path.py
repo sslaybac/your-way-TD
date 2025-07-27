@@ -1,7 +1,9 @@
 import pygame
+import os
 
 from .constants import CELL_SIZE
 from .constants import CELL_PATH
+from .constants import DEFAULT_MAP_FILE
 from .cell_manager  import find_center
 
 # singleton variable.
@@ -10,7 +12,7 @@ path = None
 class Path():
 	"""
 	input:
-		grid squares: list of (x,y) that can be used o draw/track progress on a path
+		map_file: txt file containing an encoded map, and the start and end coordinates.
 
 	members:
 		grid squares: from input
@@ -18,13 +20,46 @@ class Path():
 		distances: list of distances between each pair of coords
 		start: first element in coords.
 	"""
-	def __init__(self, grid_squares):
-		if len(grid_squares) < 2:
-			raise Exception("Cannot create a path from fewer than 2 coordiantes.")
-		self.grid_squares = grid_squares	
-		self.coords = [pygame.math.Vector2(find_center(p[0], p[1])) for p in grid_squares]
+	def __init__(self, map_file):
+		with open(map_file) as f:
+			data = f.read().splitlines()
+			self.map = data[:-1]
+			start = data[-1].split(',')
+			self.start = pygame.math.Vector2(int(start[0]), int(start[1]))
+			self.build_path()
+
+		self.coords = [pygame.math.Vector2(find_center(p[0], p[1])) for p in self.grid_squares]
 		self.distances = self.calculate_distances()
 		self.start = self.coords[0]
+
+	"""
+	utility function to extract the path from the map given
+	in the file.
+	"""
+	def build_path(self):
+		self.grid_squares = [self.start]
+		x = int(self.start.x)
+		y = int(self.start.y)
+		direction = self.map[y][x]
+		while direction != 'z':
+			match direction:
+				case 'n':
+					y -= 1
+				case 's':
+					y += 1
+				case 'w':
+					x -= 1
+				case 'e':
+					x += 1
+				case 'z':
+					pass
+				case _:
+					raise Exception("Path doesn't reach a valid endpoint")
+			self.grid_squares.append(pygame.math.Vector2(x, y))
+			direction = self.map[y][x]
+
+
+
 
 	"""
 	utility function: calculates distances member
@@ -98,5 +133,5 @@ class Path():
 def get_path():
 	global path
 	if path is None:
-		path = Path(CELL_PATH)
+		path = Path(DEFAULT_MAP_FILE)
 	return path
