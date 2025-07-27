@@ -1,0 +1,17 @@
+[
+    {
+        "num_creeps": 30,
+        "creep_type": "default",
+        "production_cooldown": 10
+    },
+    {
+        "num_creeps": 50,
+        "creep_type": "speedy",
+        "production_cooldown": 5
+    },
+    {
+        "num_creeps": 20,
+        "creep_type": "strong",
+        "production_cooldown": 10
+    }
+]

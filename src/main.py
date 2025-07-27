@@ -4,12 +4,12 @@ import sys
 from .ui import UI
 from .creeps.creep import Creep
 from .creeps.wave import Wave
+from .creeps.wave import create_wave
 from .towers.tower import Tower
 from .towers.projectile import Projectile
 
 from .constants import SCREEN_WIDTH, SCREEN_HEIGHT
 from .constants import STARTING_LIFE, STARTING_MONEY
-from .constants import DEFAULT_WAVES_SEQUENCE
 from .constants import DEFAULT_TOWER_TEMPLATES 
 from .constants import PLAY_AREA_WIDTH 
 from .constants import FRAME_RATE
@@ -17,6 +17,7 @@ from .constants import FRAME_RATE
 from .cell_manager import identify_grid_square, find_center
 from .cell_manager import get_zone
 
+from .datastore import get_datastore
 from .player import get_player
 from .path import get_path
 
@@ -44,9 +45,8 @@ def main():
 
 	# create: ui, waves
 	ui = UI()
-	waves = []
-	for wave in DEFAULT_WAVES_SEQUENCE:
-		waves.append(Wave(wave))
+
+	waves = list(map(create_wave, get_datastore().waves))
 
 	current_wave = waves.pop(0)
 

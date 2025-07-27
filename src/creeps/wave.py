@@ -40,3 +40,6 @@ class Wave():
 			Creep(DEFAULT_CREEP_TEMPLATES[self.creep_type])
 			self.num_creeps -= 1
 			self.production_timer = self.production_cooldown
+
+def create_wave(definition):
+	return Wave(definition)
