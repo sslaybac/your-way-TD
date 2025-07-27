@@ -1,6 +1,8 @@
 Current build
 Requires uv
 
-activate the virtual environment
-in the folder above the top-level git directory:
-	uv run -m hackathon-tower-defense.main
+# activate the virtual environment
+source .venv/bin/activate
+
+# run the program
+uv run -m src.main

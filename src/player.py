@@ -18,7 +18,7 @@ class Player():
 	def __init__(self, starting_money, starting_life):
 		self.money = starting_money
 		self.life = starting_life
-		self.selected_tower("default")
+		self.select_tower("default")
 
 	"""
 	input: tower name(String)
