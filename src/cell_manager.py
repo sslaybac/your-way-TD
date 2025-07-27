@@ -57,3 +57,9 @@ def cell_to_rect(grid_x,grid_y):
 	w = CELL_SIZE
 	h = CELL_SIZE
 	return pygame.Rect(x, y, w, h)
+
+def is_occupied(towers, grid_x, grid_y):
+	for tower in towers:
+		if tower.is_on_square(grid_x, grid_y):
+			return True
+	return False

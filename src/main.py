@@ -15,6 +15,7 @@ from .constants import FRAME_RATE
 
 from .cell_manager import identify_grid_square, find_center
 from .cell_manager import get_zone
+from .cell_manager import is_occupied
 
 from .datastore import get_datastore
 from .player import get_player
@@ -100,9 +101,10 @@ def main():
 				if ui.is_on_ui(grid_x, grid_y):
 					ui.check_selection(grid_x, grid_y)
 				elif not get_path().is_on_path(grid_x, grid_y):
-					cost = get_player().selected_tower["cost"]
-					if get_player().purchase_tower(cost):
-						new_tower = Tower(grid_x, grid_y, get_player().selected_tower)
+					if not is_occupied(towers, grid_x, grid_y):
+						cost = get_player().selected_tower["cost"]
+						if get_player().purchase_tower(cost):
+							new_tower = Tower(grid_x, grid_y, get_player().selected_tower)
 
 if __name__ == "__main__":
 	main()

@@ -14,6 +14,8 @@ class Tower(pygame.sprite.Sprite):
 			super().__init__(self.containers)
 		else:
 			super().__init__()
+		self.x = x
+		self.y = y
 		centerpoint = find_center(x, y)
 		self.building = CollisionCircle(centerpoint, CELL_SIZE/2)
 		self.range = CollisionCircle(centerpoint, template["range"])
@@ -76,6 +78,14 @@ class Tower(pygame.sprite.Sprite):
 		return_list = sorted(targets, reverse=True, key=lambda creep: creep.travel_distance)
 		return return_list
 
+	"""
+	Used to prevent stacking towers on a square.
+	"""
+	def is_on_square(self, target_x, target_y):
+		if self.x == target_x and self.y == target_y:
+			return True
+		else:
+			return False
 
 
 	"""
