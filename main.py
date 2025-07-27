@@ -21,10 +21,12 @@ from .player import get_player
 from .path import get_path
 
 def main():
+	# pygame initialization
 	pygame.init()
 	screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
 	running = True
 
+	# Clock initialization
 	clock = pygame.time.Clock()
 	dt = 0
 
@@ -34,11 +36,13 @@ def main():
 	creeps = pygame.sprite.Group()
 	sprites = pygame.sprite.Group()
 
+	# assign classes <-> management groups
 	Creep.containers = (creeps, sprites)
 	Tower.containers = (towers, sprites)
 	Projectile.containers = (projectiles, sprites)
 
 
+	# create: ui, waves
 	ui = UI()
 	waves = []
 	for wave in DEFAULT_WAVES_SEQUENCE:
@@ -49,13 +53,14 @@ def main():
 	# Main Game Loop
 	while running:
 		"""
-		1. Towers attack 
-		2. Projectiles move, then check collisions
-		3. Creeps move, then check for victory
-		4. Draw background, ui, path, towers, projectiles, creeps
+		1. Update the current wave
+		2. Advance to the next wave, if appropriate
+		3. If there are no waves left, and no creeps left, declare victory and
+			quit.
+		4. update (logic) all active creeps
+		5. update (logic) all active towers
+		6. update (logic) all active projectiles
 		"""
-		# towers.attack(creeps)
-		# projectiles.move(creeps)
 		current_wave.update()
 		if current_wave.is_empty():
 			if waves:
@@ -67,13 +72,26 @@ def main():
 		towers.update(creeps)
 		projectiles.update(creeps)
 
+		"""
+		7. draw a black screen
+		8. draw UI elements
+		9. draw all sprites
+		10. Show the user what was drawn
+		"""
 		screen.fill("black")
 		ui.draw(screen)
 		get_path().draw(screen)
 		for sprite in sprites:
 			sprite.draw(screen)
-
 		pygame.display.flip()
+
+		"""
+		11. advance the clock(60 FPS)
+		12. check for user input
+			a. EXIT: close game
+			b. mouse click in ui: select tower type
+			c. mouse click not in ui: place tower, if there is enough money
+		"""
 		dt = clock.tick(60) / 1000
 		for event in pygame.event.get():
 			if event.type == pygame.QUIT:

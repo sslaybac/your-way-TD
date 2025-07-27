@@ -8,6 +8,12 @@ from .cell_manager import find_center
 from .constants import DEFAULT_TOWER_TEMPLATES 
 
 class UI():
+	"""
+	No inputs needed
+	members:
+	rectangle: the drawing area for the interface panel
+	buttons: buttons that allow the player to select a tower
+	"""
 	def __init__(self):
 
 		left = 28
@@ -26,14 +32,29 @@ class UI():
 			self.buttons.append(Button(template, x_val, 3 + 2*(idx//2)))
 			idx += 1
 
+	"""
+	input: x,y for a grid square
+	output: True if the grid square is in the interface panel
+		false otherwise
+	"""
 	def is_on_ui(self, grid_x, grid_y):
 		return (grid_x >= 28)
 
+
+	"""
+	Called on a mouse click: which button(if any) was clicked?
+	"""
 	def check_selection(self, grid_x, grid_y):
 		for button in self.buttons:
 			button.check_selection(grid_x, grid_y)
 
 
+	"""
+	Draws all images associated with the UI panel
+	1. Player lives (text box)
+	2. Player money (text box)
+	3. Towers (picture buttons)
+	"""
 	def draw(self, screen):
 		pygame.draw.rect(screen, "brown", self.rectangle)
 
@@ -48,6 +69,9 @@ class UI():
 		for button in self.buttons:
 			button.draw(screen)
 
+	"""
+	Draws a text box, using provided text and grid coordinates
+	"""
 	def draw_text(self, screen, text, grid_x, grid_y):
 		font = pygame.font.Font('freesansbold.ttf', 14)
 		text_rendering = font.render(text, "green", "blue")

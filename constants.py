@@ -1,34 +1,24 @@
+# garaphics management constants
 CELL_SIZE = 50
 SCREEN_WIDTH = 32 * CELL_SIZE
 SCREEN_HEIGHT = 18 * CELL_SIZE
 PLAY_AREA_WIDTH = SCREEN_WIDTH - (4 * CELL_SIZE)
+
+#projectile management constants
 PROJECTILE_SPEED = 5
 PROJECTILE_RADIUS = 5
 
+# player management constants
 STARTING_LIFE = 20
 STARTING_MONEY = 200
 
-PATH_WIDTH = 20
-
+# default collections for path, creeps, waves, and towers
 CELL_PATH = [
-	(0,1),
-	(27,1),
-	(27,3),
-	(0,3),
-	(0,5),
-	(27,5),
-	(27,7),
-	(0,7),
-	(0,9),
-	(27,9),
-	(27,11),
-	(0,11),
-	(0,13),
-	(27,13),
-	(27,15),
-	(0,15),
-	(0,17),
-	(27,17),
+	(0,1), (27,1), (27,3), (0,3),
+	(0,5), (27,5), (27,7), (0,7),
+	(0,9), (27,9), (27,11), (0,11),
+	(0,13), (27,13), (27,15), (0,15),
+	(0,17), (27,17),
 ]
 
 DEFAULT_CREEP_TEMPLATES = {

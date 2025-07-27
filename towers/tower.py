@@ -22,6 +22,11 @@ class Tower(pygame.sprite.Sprite):
 		self.color = template["color"]
 		self.timer = 0
 
+	"""
+	1. If appropriate, step through the cooldown
+	2. Get a list of all creeps in range
+	3. If cooldown is 0 and there is a target, attack.
+	"""
 	def update(self, creeps):
 		if self.timer > 0:
 			self.timer -= 1
@@ -33,6 +38,12 @@ class Tower(pygame.sprite.Sprite):
 
 		self.attack(targets)
 
+	"""
+	Determine what type of tower we are, then attack the target(s)
+	types:
+	1. "hitscan": 1 target takes instant damage
+	2. "projectile": fire off a bullet at the chosen target
+	"""
 	def attack(self, targets):
 		self.timer = self.cooldown
 		if self.type == "hitscan":
@@ -44,14 +55,27 @@ class Tower(pygame.sprite.Sprite):
 	def launch_projectile_at(self, target):
 		Projectile(self.building.position.copy(), target.position.copy(), self.damage)
 
+	"""
+	Go through the creeps Group and return a list of all members that are in 
+	range of this tower. The list will be sorted so that the frontmost creep
+	is in position 0
+	"""
 	def identify_targets(self, creeps):
 		targets = []
 		for creep in creeps:
 			if creep.collided_with(self.range):
 				targets.append(creep)
-		return sorted(targets, key=lambda creep: creep.travel_distance)
+		return_list = sorted(targets, reverse=True, key=lambda creep: creep.travel_distance)
+		return return_list
 
 
+
+	"""
+	1. Draw the tower building
+	2. Draw the range ring
+	3. If the tower fired in the last 5 frames, draw a light so
+		the player knows that the tower fired.
+	"""
 	def draw(self, screen):
 		pygame.draw.circle(screen, "gray", self.range.position, self.range.radius, 1)
 		pygame.draw.circle(screen, self.color, self.building.position, self.building.radius, 0)
