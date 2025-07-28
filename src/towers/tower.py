@@ -59,6 +59,10 @@ class Tower(pygame.sprite.Sprite):
 		elif self.type == "AOE":
 			for target in targets:
 				target.damage(self.damage)
+		elif self.type == "slow":
+			for target in targets:
+				target.damage(self.damage)
+				target.speed = 0
 		else:
 			print("No attack Action for {self.type}")
 

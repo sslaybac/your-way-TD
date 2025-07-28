@@ -1,4 +1,4 @@
-# Your Way: customizable Tower Defense
+# Your Way TD: customizable Tower Defense
 
 This project is a the result of the Boot.dev Hackathon (July 25 to July 28 2025)
 This is a simple, highly customizable Tower Defense game with minimalist graphics.

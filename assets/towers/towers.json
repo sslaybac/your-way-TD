@@ -25,5 +25,14 @@
         "cooldown": 30,
         "range": 100,
         "color": "orange"
+    },
+    {
+        "name": "basic_slow",
+        "type": "slow",
+        "cost": 50,
+        "damage": 0,
+        "cooldown": 120,
+        "range": 100,
+        "color": "coral"
     }
 ]

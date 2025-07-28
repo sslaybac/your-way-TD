@@ -25,6 +25,7 @@ class Creep(CollisionCircle):
 		self.travel_distance = 0
 		self.move_counter = 1
 		self.speed = template["speed"]
+		self.normalSpeed = template["speed"]
 		self.maxHP = template["hp"]
 		self.currentHP = self.maxHP
 		self.bounty = template["bounty"]
@@ -56,6 +57,8 @@ class Creep(CollisionCircle):
 			print("Creep reached end of path.")
 			get_player().lose_life(1)
 			self.kill()
+		if self.speed < self.normalSpeed:
+			self.speed += (self.normalSpeed / FRAME_RATE)
 
 	"""
 	state_change:
