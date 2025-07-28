@@ -17,9 +17,9 @@ class UI():
 	"""
 	def __init__(self):
 
-		left = 28
+		left = 27
 		top = 0
-		width = 4
+		width = 5
 		height = 18
 
 		self.rectangle = get_zone(left, top, width, height)
@@ -27,10 +27,10 @@ class UI():
 		idx = 0
 		for template in get_datastore().towers.values():
 			if idx % 2 == 0:
-				x_val = 29
+				x_val = 28
 			else:
-				x_val = 31
-			self.buttons.append(Button(template, x_val, 3 + 2*(idx//2)))
+				x_val = 30
+			self.buttons.append(Button(template, x_val, 4 + 2*(idx//2)))
 			idx += 1
 
 	"""
@@ -39,7 +39,7 @@ class UI():
 		false otherwise
 	"""
 	def is_on_ui(self, grid_x, grid_y):
-		return (grid_x >= 28)
+		return (grid_x >= 27)
 
 
 	"""
@@ -57,15 +57,19 @@ class UI():
 	3. Towers (picture buttons)
 	"""
 	def draw(self, screen):
-		pygame.draw.rect(screen, "brown", self.rectangle)
+		pygame.draw.rect(screen, "gray79", self.rectangle)
 
 		lives = get_player().life
 		life_text = f"life: {lives}"
-		self.draw_text(screen, life_text, 30, 1)
+		self.draw_text(screen, life_text, 29, 1)
 
 		money = get_player().money
 		money_text = f"money: ${money}"
-		self.draw_text(screen, money_text, 30, 2)
+		self.draw_text(screen, money_text, 29, 2)
+
+		tower = get_player().selected_tower["name"]
+		tower_text = f"tower: {tower}"
+		self.draw_text(screen, tower_text, 29, 3)
 
 		for button in self.buttons:
 			button.draw(screen)
@@ -74,7 +78,7 @@ class UI():
 	Draws a text box, using provided text and grid coordinates
 	"""
 	def draw_text(self, screen, text, grid_x, grid_y):
-		font = pygame.font.Font('freesansbold.ttf', 14)
+		font = pygame.font.Font('freesansbold.ttf', 22)
 		text_rendering = font.render(text, "green", "blue")
 		text_box = text_rendering.get_rect()
 		text_box.center = find_center(grid_x, grid_y)
