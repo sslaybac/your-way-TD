@@ -29,6 +29,7 @@ Towers expect to have the following attributes
 ** `hitscan`: a single target in range takes instant damage
 ** `projectile`: The tower launches a projectile at a target in range
 ** `AOE`: All targets in range take instant damage
+** `slow`: All targets in range stop, and need to get back up to speed.
 * `cost`: how much it costs to place the tower
 * `damage`: the number of hitpoints of damage that are inflicted on the target(s)
 * `cooldown`: the number of frames that pass between shots
@@ -57,10 +58,10 @@ The level map is defined in the file `assets/maps/default_map.txt` The file begi
 
 After the map, there is a single pair of numbers, separated by a comma, on the last line of the file. These numbers represent the Creep spawn point, as an x,y grid square.
 Characters used to define the map are:
-* 'n': part of the path. the next square will be 'north' (above) from this one.
-* 's': part of the path. the next square will be 'south' (below) from this one.
-* 'w': part of the path. the next square will be 'west' (left) from this one.
-* 'e': part of the path. the next square will be 'east' (right) from this one.
-* 'z': part of the path. This is the end of the path. Creeps that reach this square will despawn and damage the player.
-* '0': non-path square. THe player is free to place towers here.
-* 'p': 'poison' square. Towers can be placed here, but their firing rate will be halved.
+* `n`: part of the path. the next square will be 'north' (above) from this one.
+* `s`: part of the path. the next square will be 'south' (below) from this one.
+* `w`: part of the path. the next square will be 'west' (left) from this one.
+* `e`: part of the path. the next square will be 'east' (right) from this one.
+* `z`: part of the path. This is the end of the path. Creeps that reach this square will despawn and damage the player.
+* `0`: non-path square. THe player is free to place towers here.
+* `p`: 'poison' square. Towers can be placed here, but their firing rate will be halved.
