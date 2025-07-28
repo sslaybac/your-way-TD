@@ -7,6 +7,8 @@ In the current build, the game plays one level (defined in a confguration file)
 Win or lose, the game will exit as soon as the level ends.
 Towers, creeps and wave are also defined in confguration files.
 
+added feature: THere is a completely automated leveling system for towers. Every 100 attacks, the tower will gain a level, which provides a damage multiplier. Levels are visualized tree-ring syle, with every new level appearing concentrically on the tower.
+
 ## Running the game
 ### requirements:
 * uv

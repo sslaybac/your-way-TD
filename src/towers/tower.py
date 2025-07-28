@@ -24,6 +24,8 @@ class Tower(pygame.sprite.Sprite):
 		self.type = template["type"]
 		self.color = template["color"]
 		self.timer = 0
+		self.exp = 0
+		self.level = 1
 		if get_path().is_poison(x, y):
 			self.cooldown *= 2
 
@@ -43,6 +45,11 @@ class Tower(pygame.sprite.Sprite):
 
 		self.attack(targets)
 
+		self.exp += 1
+		if self.exp == 100:
+			self.level += 1
+			self.exp = 0
+
 	"""
 	Determine what type of tower we are, then attack the target(s)
 	types:
@@ -52,22 +59,22 @@ class Tower(pygame.sprite.Sprite):
 	def attack(self, targets):
 		self.timer = self.cooldown
 		if self.type == "hitscan":
-			targets[0].damage(self.damage)
+			targets[0].damage(self.damage * self.level)
 			self.timer = self.cooldown
 		elif self.type == "projectile":
 			self.launch_projectile_at(targets[0])
 		elif self.type == "AOE":
 			for target in targets:
-				target.damage(self.damage)
+				target.damage(self.damage * self.level)
 		elif self.type == "slow":
 			for target in targets:
-				target.damage(self.damage)
+				target.damage(self.damage * self.level)
 				target.speed = 0
 		else:
 			print("No attack Action for {self.type}")
 
 	def launch_projectile_at(self, target):
-		Projectile(self.building.position.copy(), target.position.copy(), self.damage)
+		Projectile(self.building.position.copy(), target.position.copy(), self.damage * self.level)
 
 	"""
 	Go through the creeps Group and return a list of all members that are in 
@@ -101,5 +108,7 @@ class Tower(pygame.sprite.Sprite):
 	def draw(self, screen):
 		pygame.draw.circle(screen, "gray", self.range.position, self.range.radius, 1)
 		pygame.draw.circle(screen, self.color, self.building.position, self.building.radius, 0)
+		for l in range(self.level):
+			pygame.draw.circle(screen, "black", self.building.position, l*5, 1)
 		if self.timer > self.cooldown -5:
 			pygame.draw.circle(screen, "red", self.range.position, 5, 0)
