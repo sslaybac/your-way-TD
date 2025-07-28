@@ -1,8 +1,11 @@
 import pygame
 
+import math
+
 from .constants import CELL_SIZE
 from .collisioncircle import CollisionCircle
 from .cell_manager import find_center
+from .cell_manager import cell_to_rect
 
 from .player import get_player
 
@@ -18,7 +21,10 @@ class Button(CollisionCircle):
 		super().__init__(pos, CELL_SIZE/2)
 		self.tower_name = template["name"]
 		self.color = template["color"]
-		self.is_selected = False
+		if self.tower_name == "default":
+			self.is_selected = True
+		else:
+			self.is_selected = False
 
 	"""
 	input: x,y: grid square of a mouse click
@@ -27,9 +33,14 @@ class Button(CollisionCircle):
 	def check_selection(self, grid_x, grid_y):
 		if self.x == grid_x and self.y == grid_y:
 			get_player().select_tower(self.tower_name)
+			self.is_selected = True
+		else:
+			self.is_selected = False
 
 	"""
 	Draw this button
 	"""
 	def draw(self, screen):
 		pygame.draw.circle(screen, self.color, self.position, self.radius, 0)
+		if self.is_selected == True:
+			pygame.draw.arc(screen, "yellow", cell_to_rect(self.x, self.y), 0, 2*math.pi, 5)
