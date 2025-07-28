@@ -16,10 +16,13 @@ Towers, creeps and wave are also defined in confguration files.
 Run the provided setup.sh script. This will use uv to create a virtual environment and install pygame
 ### play
 while the virtual environment is active run the command:
-> uv run -m src.main
+> uv run -m src.main [MAP_FILE]
+
+MAP_FILE: an optional parameter that points to a user-provided map file. See the configuration section for details on how to create a map file.
 
 ## Customization options
 note: distance measurements in the game are currently mixed between pixels and grid squares. A grid square is a 50 pixel square. The path is exactly one grid square wide. The eventual goal is to convert all measurements to grid squares.
+
 ### Towers
 Towers are defined by json files in the folder `assets/towers`
 All files with the `.json` extension will be read and used to generate towers. Files may contain a single json object, or an array of objects.
@@ -54,7 +57,7 @@ Each wave has the following attributes:
 * `production_cooldown`: the number of frames that pass between each creep being released
 
 ### Map
-The level map is defined in the file `assets/maps/default_map.txt` The file begins with a 2D array of characters (27x18), representing the x,y grid coordinates of the map. Like pydraw pixels, the grid squares are 0-indexed and begin with 0,0 in the top left corner.
+The default level map is defined in the file `assets/maps/default_map.txt` The file begins with a 2D array of characters (27x18), representing the x,y grid coordinates of the map. Like pydraw pixels, the grid squares are 0-indexed and begin with 0,0 in the top left corner.
 
 After the map, there is a single pair of numbers, separated by a comma, on the last line of the file. These numbers represent the Creep spawn point, as an x,y grid square.
 Characters used to define the map are:

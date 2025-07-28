@@ -157,3 +157,8 @@ def get_path():
 	if path is None:
 		path = Path(DEFAULT_MAP_FILE)
 	return path
+
+# replace the existing path and create a new one from the given map
+def change_path(map_file):
+		global path
+		path = Path(map_file)

@@ -20,6 +20,7 @@ from .cell_manager import is_occupied
 from .datastore import get_datastore
 from .player import get_player
 from .path import get_path
+from .path import change_path
 
 def main():
 	# pygame initialization
@@ -30,6 +31,10 @@ def main():
 	# Clock initialization
 	clock = pygame.time.Clock()
 	dt = 0
+
+	# check to see if the player has requested a new map
+	if len(sys.argv) > 1:
+		change_path(sys.argv[1])
 
 	# Management groups
 	towers = pygame.sprite.Group()
